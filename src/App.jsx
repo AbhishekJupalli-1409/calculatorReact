@@ -80,7 +80,7 @@ function FloatingDiv() {
           top: `${position.y-40}px`,
           left: `${position.x-40}px`,
           pointerEvents: "none", // Prevents the div from blocking the pointer
-        transition: "all 0.5s ease", // Smooth movement
+        transition: "all 0.9s ease", // Smooth movement
           
         }} onClick={handleBubbleClick}>
      {isBubbleVisible && <Bubble onClick={handleBubbleClick} />}
