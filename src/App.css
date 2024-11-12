@@ -5,9 +5,13 @@
 .app {
   position: relative;
   height: 100vh;
+  padding-top: 2%;
   overflow: hidden;
+  
 }
-
+::-webkit-scrollbar{
+  display: none;
+}
 .background-video {
   position: absolute;
     top: 50%;
@@ -20,7 +24,27 @@
   z-index: -1;
 }
 
+.sometext{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+h1{
+  color: white;
+}
+
+.forbubblefloat{
+  width: 70%;
+height: 70%;
+margin: auto;
+padding-top: 10%;
+
+  position: relative;
+  margin:auto;
+  
+}
 .Calculator{
   background-image: linear-gradient(to bottom right, goldenrod,goldenrod , rgb(248, 248, 242));
  background-repeat: no-repeat;
@@ -29,10 +53,14 @@
  background-size: cover;
   border: 2px solid black;
   border-radius:2%;
-  padding: 10% 5%;
-  width: 50%;
-  margin: auto ;
-  margin-top: 7%;
+  padding: 5% 3%;
+  width: 70%;
+  height: 50%;
+  position: relative;
+  margin:auto;
+
+  
+  
 
 }
 .blur{
