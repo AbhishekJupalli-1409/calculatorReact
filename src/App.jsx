@@ -2,12 +2,14 @@ import React from "react";
 import videoSource from "./videos/darkvieo.mp4"
 import './App.css'
 import Bubble from "./Bubble";
+
 import {
   useState,
   useRef
 } from "react"; 
 
-function FloatingDiv() {
+
+function App() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   // Track mouse movement
@@ -58,11 +60,31 @@ function FloatingDiv() {
 
   	// Add the code for the resetResult function 
   }; 
-   const [isBubbleVisible, setIsBubbleVisible] = useState(true);
+  const [isBubbleVisible, setIsBubbleVisible] = useState(true);
+  const [scaleClass, setScaleClass] = useState("scale-up");
 
   const handleBubbleClick = () => {
-    setIsBubbleVisible(false); // Remove bubble when clicked
+    // Hide the bubble initially
+    setIsBubbleVisible(false);
+    
+    // After 3 seconds, show the bubble again with a scale-up effect
+    setTimeout(() => {
+      setScaleClass("scale-up"); // Start small
+      const randomNumx = Math.random() *10* 40;
+      const randomNumy = Math.random() *10* 100;
+      setPosition(
+        { x: `${randomNumx}`, y: -`${randomNumy}` }
+      )
+        
+      setIsBubbleVisible(true); // Show the bubble
+
+      // Remove the scale-up class after a very short delay to trigger the transition
+      setTimeout(() => {
+        setScaleClass(""); // Scale to normal size
+      }, 10); // Short delay to allow transition to apply
+    }, 1000); // 3-second delay before showing again
   };
+
  
 
   return (
@@ -77,18 +99,25 @@ function FloatingDiv() {
       />
       
    
-      <div className="Calculator" >
-           <div className="forbubblefloat" >
-        <div style={{
-          position: "absolute",
-          top: `${position.y-40}px`,
-          left: `${position.x-40}px`,
-          pointerEvents: "none", // Prevents the div from blocking the pointer
-        transition: "all 10s ease", // Smooth movement
-          
-        }} onClick={handleBubbleClick}>
-     {isBubbleVisible && <Bubble onClick={handleBubbleClick} />}
-      </div>
+      <div className="Calculator">
+        <div className="forbubblefloat" >
+         
+  <div
+            style={{
+     
+      display:isBubbleVisible?"block" : "none",
+      position: "absolute",
+      top: `${position.y - 40}px`,
+      left: `${position.x - 40}px`,
+      transition: "all 10s ease",
+    }}
+   
+  >
+      <Bubble onClick={handleBubbleClick} className={`bubble ${scaleClass}`} />
+  </div>
+
+
+       
         <h1>Simplest Working Calculator</h1> 
        
       <form>
@@ -122,4 +151,4 @@ function FloatingDiv() {
   );
 }
 
-export default FloatingDiv;
+export default App;

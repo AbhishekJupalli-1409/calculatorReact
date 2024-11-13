@@ -1,54 +1,54 @@
 .bubble {
   width: 170px;
   height: 150px;
-  cursor: pointer; /* Indicates it's clickable */
-   display: flex;
+  cursor: pointer;
+  display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: opacity 1s ease, transform 1s ease; /* Smooth fade and scaling */
   z-index: 100;
+  animation: rotate360 9s linear infinite;
 }
+
+/* Bubble.css */
+.bubble {
+    /* Ensure pointer-events is not set to none */
+    pointer-events: auto;
+    /* Other styles */
+}
+.bubble {
+  transition: opacity 1s ease, transform 1s ease; /* Transition for smooth fading */
+  opacity: 1;
+}
+
+
+
+.bubble.visible {
+  transition: all 1s ease;
+  opacity: 1; /* Makes the bubble fade in */
+  transform: scale(0.4); /* Reset to original size */
+}
+
 
 @keyframes rotate360 {
+  
   0% {
-  transform: scale(1.3);
+    transform: scale(1.3) rotate(0deg);
   }
   25% {
-    transform: rotate(90deg);
-     transform: scale(1.1);
-    
+    transform: scale(1.2) rotate(90deg);
   }
-  25% {
-    transform: rotate(90deg);
-    
-     
-    
+  50% {
+    transform: scale(1) rotate(180deg);
   }
-  50%{
-    transform: rotate(180deg);
-   
-   
-   
+  75% {
+    transform: scale(1) rotate(270deg);
   }
-  75%{
-    transform: rotate(270deg);
-    
+  100% {
+    transform: scale(1.3) rotate(360deg);
   }
-
- 
-  100%{
-transform: rotate(360deg);
-transform: scale(1.3);
-
-  }
-
-}
-
-.bubble {
-  animation: rotate360 9s linear infinite; /* Adjust the duration as needed */
 }
 
 .bubble:hover {
-   width: 200px;
-  height: 200px;/* Slightly enlarge on hover for effect */
+  transform: scale(); /* Slightly enlarge on hover for effect */
 }
