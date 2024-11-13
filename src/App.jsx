@@ -75,18 +75,20 @@ function FloatingDiv() {
         loop
         muted
       />
-      <div style={{
+      
+   
+      <div className="Calculator" >
+           <div className="forbubblefloat" >
+        <div style={{
           position: "absolute",
           top: `${position.y-40}px`,
           left: `${position.x-40}px`,
           pointerEvents: "none", // Prevents the div from blocking the pointer
-        transition: "all 0.9s ease", // Smooth movement
+        transition: "all 10s ease", // Smooth movement
           
         }} onClick={handleBubbleClick}>
      {isBubbleVisible && <Bubble onClick={handleBubbleClick} />}
       </div>
-      <div className="forbubblefloat" >
-        <div className="Calculator" >
         <h1>Simplest Working Calculator</h1> 
        
       <form>
